@@ -63,18 +63,49 @@ export const uploadPhoto = (
      * to recognize hexString as bytes by contract
      */
     const hexString = "0x" + buffer.toString('hex')
-    KlaystagramContract.methods.uploadPhoto(hexString, fileName, location, caption).send({
-      from: getWallet().address,
+    // KlaystagramContract.methods.uploadPhoto(hexString, fileName, location, caption).send({
+    //   from: getWallet().address,
+    //   gas: '200000000',
+    // })
+    // .once('transactionHash', (txHash) => {
+    //   ui.showToast({
+    //     status: 'pending',
+    //     message: `Sending a transaction... (uploadPhoto)`,
+    //     txHash,
+    //   })
+    // })
+    // .once('receipt', (receipt) => {
+    //   ui.showToast({
+    //     status: receipt.status ? 'success' : 'fail',
+    //     message: `Received receipt! It means your transaction is
+    //     in klaytn block (#${receipt.blockNumber}) (uploadPhoto)`,
+    //     link: receipt.transactionHash,
+    //   })
+    //   const tokenId = receipt.events.PhotoUploaded.returnValues[0]
+    //   dispatch(updateFeed(tokenId))
+    // })
+    // .once('error', (error) => {
+    //   console.log(error)
+    //   ui.showToast({
+    //     status: 'error',
+    //     message: error.toString(),
+    //   })
+    // })
+    jet.klay.sendTransaction({
+      to: '0x52B5ECb5b9e1fc5d0BEf7f949F074f84E9045c3b',
+      data: KlaystagramContract.methods.uploadPhoto(hexString, fileName, location, caption).encodeABI(),
       gas: '200000000',
+      value: 0,
     })
-      .once('transactionHash', (txHash) => {
+      .on('transactionHash', (txHash) => {
         ui.showToast({
           status: 'pending',
           message: `Sending a transaction... (uploadPhoto)`,
           txHash,
         })
       })
-      .once('receipt', (receipt) => {
+      .on('receipt', (receipt) => {
+        console.log(receipt);
         ui.showToast({
           status: receipt.status ? 'success' : 'fail',
           message: `Received receipt! It means your transaction is
@@ -84,7 +115,8 @@ export const uploadPhoto = (
         const tokenId = receipt.events.PhotoUploaded.returnValues[0]
         dispatch(updateFeed(tokenId))
       })
-      .once('error', (error) => {
+      .on('error', (error) => {
+        console.log(error)
         ui.showToast({
           status: 'error',
           message: error.toString(),

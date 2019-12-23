@@ -61,7 +61,7 @@ const Nav = ({ logout, address }) => (
 )
 
 const mapStateToProps = (state) => ({
-  address: state.auth.address,
+  address: state.auth.isJetstream? window.jet.klay.address : state.auth.address,
 })
 
 const mapDispatchToProps = (dispatch) => ({
