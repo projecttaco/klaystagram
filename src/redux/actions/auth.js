@@ -34,6 +34,12 @@ export const login = (privateKey) => (dispatch) => {
   })
 }
 
+export const loginJetstream = () => (dispatch) => {
+  return dispatch({
+    type: LOGIN,
+  })
+}
+
 export const logout = () => (dispatch) => {
   dispatch(removeWallet())
   return dispatch({

@@ -7,9 +7,22 @@
 }
 
 .LoginForm__button {
+  margin-bottom: 30px;
+
+  @include breakpoint("max-card") {
+    margin-bottom: 30px;
+  }
+}
+
+.LoginForm__button__jetstream {
   margin-bottom: 80px;
 
   @include breakpoint("max-card") {
     margin-bottom: 30px;
+  }
+
+  &:hover {
+    background-color: #f5315f;
+    color: $white;
   }
 }

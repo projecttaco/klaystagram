@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   isLoggedIn: !!sessionStorage.getItem('walletInstance'),
+  isJetstream: false,
   privateKey: null,
   address: null,
 }

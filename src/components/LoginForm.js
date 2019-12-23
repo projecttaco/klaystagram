@@ -28,6 +28,11 @@ class LoginForm extends Component {
       : this.setState({ warningMessage: '* Invalid Private Key' })
   }
 
+  handleLoginJetstream = () => {
+    const { loginJetstream } = this.props
+    window.jet? loginJetstream() : this.setState({ warningMessage: '* You do not have Jetstream' })
+  }
+
   render() {
     const { warningMessage } = this.state
     return (
@@ -46,6 +51,11 @@ class LoginForm extends Component {
           title="Log in"
           onClick={this.handleLogin}
         />
+        <Button
+          className="LoginForm__button__jetstream"
+          title="Log in with Jetstream"
+          onClick={this.handleLoginJetstream}
+        />
       </div>
     )
   }
@@ -53,6 +63,7 @@ class LoginForm extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   login: (privateKey) => dispatch(authActions.login(privateKey)),
+  loginJetstream: () => dispatch(authActions.loginJetstream()),
 })
 
 export default connect(null, mapDispatchToProps)(LoginForm)
