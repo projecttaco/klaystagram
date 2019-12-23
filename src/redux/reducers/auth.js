@@ -3,6 +3,7 @@ import {
   LOGOUT,
   INTEGRATE_WALLET,
   REMOVE_WALLET,
+  LOGIN_JETSTREAM,
 } from 'redux/actions/actionTypes'
 
 const initialState = {
@@ -18,6 +19,12 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+      }
+    case LOGIN_JETSTREAM:
+      return {
+        ...state,
+        isLoggedIn: true,
+        isJetstream: true,
       }
     case LOGOUT:
       return {

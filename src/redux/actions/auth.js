@@ -4,6 +4,7 @@ import {
   LOGOUT,
   INTEGRATE_WALLET,
   REMOVE_WALLET,
+  LOGIN_JETSTREAM,
 } from './actionTypes'
 
 export const integrateWallet = (privateKey) => (dispatch) => {
@@ -36,7 +37,7 @@ export const login = (privateKey) => (dispatch) => {
 
 export const loginJetstream = () => (dispatch) => {
   return dispatch({
-    type: LOGIN,
+    type: LOGIN_JETSTREAM,
   })
 }
 

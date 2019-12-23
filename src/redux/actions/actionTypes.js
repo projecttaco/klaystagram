@@ -1,4 +1,5 @@
 export const LOGIN = 'LOGIN'
+export const LOGIN_JETSTREAM = 'LOGIN_JETSTREAM'
 export const LOGOUT = 'LOGOUT'
 export const INTEGRATE_WALLET = 'INTEGRATE_WALLET'
 export const REMOVE_WALLET = 'REMOVE_WALLET'
