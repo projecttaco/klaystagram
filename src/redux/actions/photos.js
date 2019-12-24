@@ -24,7 +24,7 @@ const updateFeed = (tokenId) => (dispatch, getState) => {
 const updateOwnerAddress = (tokenId, to) => (dispatch, getState) => {
   const { photos: { feed } } = getState()
   const newFeed = feed.map((photo) => {
-    if (photo[ID] !== tokenId) return photo
+    if (photo['ID'] !== tokenId) return photo
     photo[OWNER_HISTORY].push(to)
     return photo
   })
@@ -52,9 +52,9 @@ export const uploadPhoto = (
   file,
   fileName,
   location,
-  caption,
-  isJetstream
-) => (dispatch) => {
+  caption
+) => (dispatch, getState) => {
+  const { auth: { isJetstream } } = getState()
   const reader = new window.FileReader()
   reader.readAsArrayBuffer(file)
   reader.onloadend = () => {
@@ -168,7 +168,8 @@ const getContractEventsFromReceipt = (contractInstance, receipt) => {
   return receipt.events
 }
 
-export const transferOwnership = (tokenId, to, isJetstream) => (dispatch) => {
+export const transferOwnership = (tokenId, to) => (dispatch, getState) => {
+  const { auth: { isJetstream } } = getState()
   if (isJetstream) {
     transferOwnershipMethodJetstream(dispatch, tokenId, to)
   } else {
