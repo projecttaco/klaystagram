@@ -8,7 +8,7 @@ const PhotoHeader = ({ currentOwner, location }) => (
   <header className="PhotoHeader">
     <LinkNewTab
       className="PhotoHeader__owner"
-      link={`${KLAYTN_SCOPE}transactions?account=${currentOwner}`}
+      link={`${KLAYTN_SCOPE}account/${currentOwner}`}
       title={currentOwner}
     />
     <p className="PhotoHeader__location">{location}</p>

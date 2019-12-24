@@ -62,7 +62,7 @@ const InfoTooltip = ({
       Original Owner
       <LinkNewTab
         className="CopyrightInfo__ownerLink"
-        link={`${KLAYTN_SCOPE}transactions?account=${originalOwner}`}
+        link={`${KLAYTN_SCOPE}account/${originalOwner}`}
         title={originalOwner}
       />
     </p>
@@ -70,7 +70,7 @@ const InfoTooltip = ({
       Current Owner
       <LinkNewTab
         className="CopyrightInfo__ownerLink"
-        link={`${KLAYTN_SCOPE}transactions?account=${currentOwner}`}
+        link={`${KLAYTN_SCOPE}account/${currentOwner}`}
         title={currentOwner}
       />
     </p>
