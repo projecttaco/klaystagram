@@ -53,7 +53,7 @@ class UploadPhoto extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const { file, fileName, location, caption } = this.state
-    this.props.uploadPhoto(file, fileName, location, caption)
+    this.props.uploadPhoto(file, fileName, location, caption, this.props.isJetstream)
     ui.hideModal()
   }
 
@@ -115,9 +115,13 @@ class UploadPhoto extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  uploadPhoto: (file, fileName, location, caption) =>
-    dispatch(photoActions.uploadPhoto(file, fileName, location, caption)),
+const mapStateToProps = (state) => ({
+  isJetstream: state.auth.isJetstream
 })
 
-export default connect(null, mapDispatchToProps)(UploadPhoto)
+const mapDispatchToProps = (dispatch) => ({
+  uploadPhoto: (file, fileName, location, caption, isJetstream) =>
+    dispatch(photoActions.uploadPhoto(file, fileName, location, caption, isJetstream)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UploadPhoto)
