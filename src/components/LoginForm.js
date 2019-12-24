@@ -30,7 +30,7 @@ class LoginForm extends Component {
 
   handleLoginJetstream = () => {
     const { loginJetstream } = this.props
-    window.jet? loginJetstream() : this.setState({ warningMessage: '* You do not have Jetstream' })
+    window.jet? loginJetstream() : this.setState({ warningMessage: '* No Jetstream found. Please log in with Private Key' })
   }
 
   render() {
@@ -51,6 +51,7 @@ class LoginForm extends Component {
           title="Log in"
           onClick={this.handleLogin}
         />
+        <div style={{color:'#8c8c8c', textAlign: 'center', marginBottom: '30px', fontWeight: 'bold'}}>or</div>
         <Button
           className="LoginForm__button__jetstream"
           title="Log in with Jetstream"
