@@ -25,6 +25,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         isJetstream: true,
+        address: jet.klay.address,
       }
     case LOGOUT:
       return {

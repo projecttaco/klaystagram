@@ -14,7 +14,6 @@ class WalletInfo extends Component {
   }
 
   getBalance = (address = this.props.address) => {
-    if (window.jet) address = window.jet.klay.address
     if (!address) return
     caver.klay.getBalance(address).then((balance) => {
       this.setState({
@@ -24,14 +23,13 @@ class WalletInfo extends Component {
   }
 
   render() {
-    const address = window.jet? window.jet.klay.address : this.props.address
     return (
       <div className="WalletInfo">
         <Input
           className="WalletInfo__address"
           name="address"
           label="Wallet Address"
-          value={address}
+          value={this.props.address}
           readOnly
         />
         <Input
